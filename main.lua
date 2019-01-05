@@ -58,9 +58,12 @@ local function handleKey(press)
 	if kp == "down" and k == "down" then
 		pullBalloon()
 	end
+
+	-- how would we handle left or right key presses?
 end
 
 -- what to do when you click on the balloon itself
 balloon:addEventListener("tap", pushBalloon)
+
 -- what to do when a key is pressed
 Runtime:addEventListener("key", handleKey)
