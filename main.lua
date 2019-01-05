@@ -4,21 +4,19 @@
 --
 -----------------------------------------------------------------------------------------
 
-require "ssk2.loadSSK"
-_G.ssk.init({ measure = false })
-
-local layers = ssk.display.quickLayers(sceneGroup,  "underlay",  "world",
-									   {  "background",  "content",  "foreground" },
-									   "overlay")
-ssk.easyInputs.twoTouch.create(layers.underlay, { debugEn = true, keyboardEn = true } )
+-- what devices are connected to the game?
+local inputDevices = system.getInputDevices()
+for i = 1,#inputDevices do
+    local device = inputDevices[i]
+    print("device: " .. device.descriptor )
+end
 
 local tapCount = 0
-
 local background = display.newImageRect("background.png", 1280, 1024 )
 background.x = display.contentCenterX
 background.y = display.contentCenterY
 
-local tapText = display.newText(tapCount, display.contentCenterX, 80, native.systemFont, 40)
+local tapText = display.newText(tapCount, 50, 50, native.systemFont, 40)
 tapText:setFillColor( 255, 255, 255 )
 
 local platform = display.newImageRect("platform.png", 1280, 50)
@@ -42,8 +40,25 @@ local function pushBalloon()
 	tapText.text = tapCount
 end
 
-function balloon.onTwoTouchLeft( self, event )
-	pushBalloon()
-end; listen("onTwoTouchLeft", balloon)
+local function pullBalloon()
+	balloon:applyLinearImpulse(0, 0.75, balloon.x, balloon.y)
+	tapCount = tapCount + 1
+	tapText.text = tapCount
+end
+
+local function handleKey(press)
+	local kp = press.phase
+	print(kp)
+	local k = press.keyName
+	print(k)
+
+	if kp == "down" and k == "up" then
+		pushBalloon()
+	end
+	if kp == "down" and k == "down" then
+		pullBalloon()
+	end
+end
 
 balloon:addEventListener("tap", pushBalloon)
+Runtime:addEventListener("key", handleKey)
