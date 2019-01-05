@@ -4,7 +4,7 @@
 --
 -----------------------------------------------------------------------------------------
 
--- what devices are connected to the game?
+-- what (if any) devices are connected to the game?
 local inputDevices = system.getInputDevices()
 for i = 1,#inputDevices do
     local device = inputDevices[i]
@@ -48,9 +48,9 @@ end
 
 local function handleKey(press)
 	local kp = press.phase
-	print(kp)
+	print("Key Press: " .. kp)
 	local k = press.keyName
-	print(k)
+	print("Key Name: " .. k)
 
 	if kp == "down" and k == "up" then
 		pushBalloon()
@@ -60,5 +60,7 @@ local function handleKey(press)
 	end
 end
 
+-- what to do when you click on the balloon itself
 balloon:addEventListener("tap", pushBalloon)
+-- what to do when a key is pressed
 Runtime:addEventListener("key", handleKey)
