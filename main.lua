@@ -34,4 +34,12 @@ local function pushBalloon()
 	tapText.text = tapCount
 end
 
+local function onKeyEvent(event)
+	if ( event.keyName == "up" ) then
+		balloon:applyLinearImpulse( 0, -0.75, balloon.x, balloon.y )
+    end
+	print ( event.keyName )
+end
+
 balloon:addEventListener( "tap", pushBalloon )
+balloon:addEventListener( "key", onKeyEvent )
