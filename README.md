@@ -1,10 +1,9 @@
- # A rhythm game
+# A rhythm game
 
-* Similar to Guitarhero
-* Super complicated rhythms
-* Flexes independence of limbs
-* Starts out easy, increases in complexity
+The is to create a game similar to GuitarHero, with some complicated rhythms that flex independence of limbs (or fingers, I guess :-)
 
-## Interface Ideas
+## Setup
 
-* Assets come scrolling to the user
+* Start up the Corona Labs Simulator
+* Open `main.lua` in your editor of choice
+* Make edits and check the simulator
