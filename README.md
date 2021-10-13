@@ -1,9 +1,11 @@
-# A rhythm game
+# A simple game
 
-The is to create a game similar to GuitarHero, with some complicated rhythms that flex independence of limbs (or fingers, I guess :-)
+Keep the balloon in the air, or don't...I don't care...whatever
 
 ## Setup
 
-* Start up the Corona Labs Simulator
-* Open `main.lua` in your editor of choice
-* Make edits and check the simulator
+- <https://github.com/coronalabs/corona>
+- Install Solar2d `brew install solar2d`
+- Start up the Solar2D (formerly, Corona Labs) Simulator
+- Open `main.lua` in your editor of choice
+- Make edits and then check the simulator
